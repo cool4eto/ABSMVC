@@ -1,0 +1,34 @@
+﻿@model ABS.Entities.SeatViewModel
+
+@{
+    ViewBag.Title = "ChangeStatus";
+}
+
+<h2>ChangeStatus</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.FlightId)
+    <div class="form-horizontal">
+        <h4>Do you really want to book seat: </h4>
+        <h3>@Model.Row@Model.Col </h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SeatId)
+
+        <div class="form-group">
+            <div class=" col-md-10">
+                <input type="submit" value="Book the seat" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { FlightId = Model.FlightId}, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+<h2>
+    @{
+        string error = ViewBag.Message.ToString();
+        @Html.Label(error);
+    }
+</h2>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

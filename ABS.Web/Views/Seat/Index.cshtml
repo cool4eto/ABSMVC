@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ABS.Entities.SeatViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Seats List</h2>
+@Html.AntiForgeryToken()
+
+@if (Model.FirstOrDefault() == null)
+{
+    @Html.Label("No seats associated with this flight")
+}
+else
+{
+
+    var firstSeat = Model.First();
+    var currentRow = firstSeat.Row;
+    var currentSection = firstSeat.Section;
+    @Html.Label(firstSeat.Section)
+    <br />
+
+    foreach (var item in Model)
+    {
+        if (currentRow != item.Row)
+        {
+            <br />
+            currentRow = item.Row;
+        }
+        if (currentSection != item.Section)
+        {
+            <br />
+            @Html.Label(item.Section)
+            <br />
+            currentSection = item.Section;
+        }
+        @Html.ActionLink(item.Col + item.Row, "ChangeStatus", new { SeatId = item.SeatId }, new { @class = (item.Status == true ? "btn btn-primary" : "btn btn-danger") })
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Flight")
+</div>
