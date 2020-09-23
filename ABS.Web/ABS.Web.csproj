@@ -249,6 +249,7 @@
     <Content Include="Views\Seat\Create.cshtml" />
     <Content Include="Views\Seat\Index.cshtml" />
     <Content Include="Views\Seat\ChangeStatus.cshtml" />
+    <Content Include="Views\Airline\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
